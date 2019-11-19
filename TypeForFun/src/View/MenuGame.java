@@ -21,12 +21,15 @@ public class MenuGame implements ActionListener{
         mainMenuP.setLayout(new GridLayout(3,1));
         
         EasyB = Helper.createButton("Easy");
+        EasyB.addActionListener(this);
         mainMenuP.add(EasyB);
         
         NormalB = Helper.createButton("Normal");
+        NormalB.addActionListener(this);
         mainMenuP.add(NormalB);
         
         HardB = Helper.createButton("Hard");
+        HardB.addActionListener(this);
         mainMenuP.add(HardB);
         
         ExitB = Helper.createButton("Exit");
