@@ -3,7 +3,7 @@ package Model;
 import java.awt.*;
 import javax.swing.*;
 public class Helper{
-
+// Tool creat easy
     public static JLabel createTitleLabel(String t){
         JLabel l = new JLabel(t);
         l.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 90));
