@@ -101,14 +101,16 @@ public class KeyListenerTest implements KeyListener, ActionListener {
             str = "";
             tf.setText(str);
             hp += 10;
+
             t1.stop();
+
             MyClock time = new MyClock();
             Thread t1 = new Thread(time);
             t1.start();
+
             frame.getContentPane().remove(time);
             frame.getContentPane().add(time);
-            frame.invalidate();
-            frame.validate();
+            time.setFont(new Font("Courier", Font.BOLD,100));
         }
         if (str.length() == words[i].length()) {
             hp -= 20;
