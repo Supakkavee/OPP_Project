@@ -1,21 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package function;
 
-/**
- *
- * @author NOC
- */
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class KeyListenerTest implements KeyListener, ActionListener {
+public class game_main implements KeyListener, ActionListener {
+
+
     public static void main(String args[]) {
-        new KeyListenerTest();
+        new game_main().init();
     }
     String str = "", int_to_str;
     char s;
@@ -26,10 +18,13 @@ public class KeyListenerTest implements KeyListener, ActionListener {
     JTextField tf, tf2;
     JLabel lbl, show_word, show_scord, show_hp;
     JButton btn;
-    MyClock time = new MyClock();
-    Thread t1 = new Thread(time);
 
-    public KeyListenerTest() {
+    Timer t = new Timer();
+
+    public void init() {
+        Thread tr = new Thread(t);
+        JPanel panel = new JPanel();
+
         frame = new JFrame();
         lbl = new JLabel();
         show_word = new JLabel();
@@ -37,10 +32,8 @@ public class KeyListenerTest implements KeyListener, ActionListener {
         show_hp = new JLabel();
         tf = new JTextField(15);
         tf.addKeyListener(this);
-        tf2 = new JTextField(15);
         btn = new JButton("Clear");
         btn.addActionListener(this);
-        JPanel panel = new JPanel();
 
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
@@ -59,19 +52,19 @@ public class KeyListenerTest implements KeyListener, ActionListener {
         frame.add(show_hp);
         frame.add(show_word);
         frame.add(show_scord);
-        frame.add(time);
+        frame.add(t);
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1600, 900);
         frame.setVisible(true);
 
-        time.setFont(new Font("Courier", Font.BOLD,100));
+        // t.setFont(new Font("Courier", Font.BOLD,100));
         show_word.setFont(new Font("Courier", Font.BOLD,100));
         show_scord.setFont(new Font("Courier", Font.BOLD,100));
         show_hp.setFont(new Font("Courier", Font.BOLD,100));
 
         show_word.setText(words[i]);
-        t1.start();
+        // t.start();
     }
 
     @Override
@@ -102,15 +95,6 @@ public class KeyListenerTest implements KeyListener, ActionListener {
             tf.setText(str);
             hp += 10;
 
-            t1.stop();
-
-            MyClock time = new MyClock();
-            Thread t1 = new Thread(time);
-            t1.start();
-
-            frame.getContentPane().remove(time);
-            frame.getContentPane().add(time);
-            time.setFont(new Font("Courier", Font.BOLD,100));
         }
         if (str.length() == words[i].length()) {
             hp -= 20;

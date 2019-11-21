@@ -14,15 +14,15 @@ public class Timer extends JPanel implements Runnable {
             setLayout(null);
             time = new JLabel();
             l = new JLabel();
-            
+
             time.setBounds(150, 100, 100, 100);
             l.setBounds(150, 200, 100, 100);
-            
+
             add(time);
-            add(l);
+            // add(l);
             while (true) {
                 if (sec == 0) {
-                    l.setText(w.getRandom(w.getWord()));
+                    // l.setText(w.getRandom(w.getWord()));
                     l.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 30));
                     sec = 15;
                 }
