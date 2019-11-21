@@ -7,60 +7,57 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class MenuGame implements ActionListener{
-    private JPanel mainMenuP;
-    private JButton EasyB, NormalB, HardB, ExitB;
-    private BgPanel bg = new BgPanel(new ImageIcon("img/bg1.jpg").getImage());
-    public MenuGame(){
-        BgPanel img = new BgPanel(new ImageIcon("img/Jeanne1.png").getImage());
-        img.setBounds(0, 100, 600, 500);
-        bg.add(img);
-        
-        mainMenuP = new JPanel();
-        mainMenuP.setBounds(440, 100, 400, 150);
-        mainMenuP.setLayout(new GridLayout(3,1));
-        
-        EasyB = Helper.createButton("Easy");
-        EasyB.addActionListener(this);
-        mainMenuP.add(EasyB);
-        
-        NormalB = Helper.createButton("Normal");
-        NormalB.addActionListener(this);
-        mainMenuP.add(NormalB);
-        
-        HardB = Helper.createButton("Hard");
-        HardB.addActionListener(this);
-        mainMenuP.add(HardB);
-        
-        ExitB = Helper.createButton("Exit");
-        ExitB.setBounds(440, 500, 400, 50);
-        ExitB.addActionListener(this);
-        bg.add(ExitB);
-        
-        BgPanel img1 = new BgPanel(new ImageIcon("img/Europa.png").getImage());
-        img1.setBounds(750, 100, 600, 500);
-        bg.add(img1);
-        
-        bg.add(mainMenuP);
+public class MenuGame implements MouseListener {
+
+    private BgPanel bg = new BgPanel(new ImageIcon("img/character.png").getImage());
+    private BgPanel s1 = new BgPanel(new ImageIcon("img/select.png").getImage());
+    private BgPanel s2 = new BgPanel(new ImageIcon("img/select.png").getImage());
+    private BgPanel s3 = new BgPanel(new ImageIcon("img/select.png").getImage());
+
+    public MenuGame() {
+
+        s1.setBounds(160, 550, 168, 80);
+        s1.addMouseListener(this);
+
+        s2.setBounds(550, 550, 168, 80);
+        s2.addMouseListener(this);
+
+        s3.setBounds(940, 550, 168, 80);
+        s3.addMouseListener(this);
+
+        bg.add(s1);
+        bg.add(s2);
+        bg.add(s3);
+
     }
 
-    public JPanel getPanel(){
-        return bg; 
-    } 
+    public JPanel getPanel() {
+        return bg;
+    }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource().equals(ExitB)) {
-            System.exit(0);
-        }
-        if (ae.getSource().equals(EasyB)) {
+    public void mouseClicked(MouseEvent me) {
+    }
+
+    public void mousePressed(MouseEvent me) {
+        if (me.getSource().equals(s1)) {
 
         }
-        if (ae.getSource().equals(NormalB)) {
+        if (me.getSource().equals(s2)) {
 
         }
-        if (ae.getSource().equals(HardB)) {
+        if (me.getSource().equals(s3)) {
 
         }
     }
+
+    public void mouseReleased(MouseEvent me) {
+    }
+
+    public void mouseEntered(MouseEvent me) {
+    }
+
+    public void mouseExited(MouseEvent me) {
+    }
+
 }
