@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
+// Draw Bankground image
 class BgPanel extends JPanel {
 
     private Image img;
