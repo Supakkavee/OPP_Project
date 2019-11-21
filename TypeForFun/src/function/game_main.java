@@ -35,6 +35,7 @@ public class game_main implements KeyListener, ActionListener {
         btn = new JButton("Clear");
         btn.addActionListener(this);
 
+
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
         int screenHeight = screenSize.height;
@@ -52,16 +53,16 @@ public class game_main implements KeyListener, ActionListener {
         frame.add(show_hp);
         frame.add(show_word);
         frame.add(show_scord);
-        frame.add(t);
+        frame.add(t); // << ใส่เวลาเข้าไป ซึ่งยังใส่ไม่ได้ <<<<<<< ฝากดูหน่อย
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1600, 900);
         frame.setVisible(true);
 
-        // t.setFont(new Font("Courier", Font.BOLD,100));
-        show_word.setFont(new Font("Courier", Font.BOLD,100));
-        show_scord.setFont(new Font("Courier", Font.BOLD,100));
-        show_hp.setFont(new Font("Courier", Font.BOLD,100));
+        t.setFont(new Font("Courier", Font.BOLD,100)); // << set font ของเวลา
+        show_word.setFont(new Font("Courier", Font.BOLD,100));// << set font ของคำ
+        show_scord.setFont(new Font("Courier", Font.BOLD,100));// << set font ของคะแนน
+        show_hp.setFont(new Font("Courier", Font.BOLD,100));// << set font ของเลือด
 
         show_word.setText(words[i]);
         // t.start();
@@ -73,21 +74,22 @@ public class game_main implements KeyListener, ActionListener {
     }
 
     @Override
-    public void keyPressed(KeyEvent ke) {
+    public void keyPressed(KeyEvent ke) { // กรณี key ลงไป
         lbl.setText("You have pressed "+ke.getKeyChar());
         s = ke.getKeyChar();
-        if (Character.toString(s).matches(".*[a-z].*")){
+        if (Character.toString(s).matches(".*[a-z].*")){ // บอกว่าให้ a-z พิมได้เท่านั้น
             str += ke.getKeyChar();
         }
-        if (ke.getKeyChar() == 8 && str != null && str.length() > 0) // Blackspace
+        if (ke.getKeyChar() == 8 && str != null && str.length() > 0) // Blackspace ลบตัวสุดท้ายออกไป
             str = str.substring(0, str.length() - 1);
+
         System.out.println(str.equals(words[i])+" "+str+" "+words[i]+" ");
     }
 
     @Override
-    public void keyReleased(KeyEvent ke) {
+    public void keyReleased(KeyEvent ke) { // กรณี key ขึ้นมา
         lbl.setText("You have released "+ke.getKeyChar());
-        if (str.equals(words[i])) {
+        if (str.equals(words[i])) { // << กรณีพิมพ์ถูก
             score++;
             System.out.println("score = "+score);
             i++;
@@ -96,7 +98,7 @@ public class game_main implements KeyListener, ActionListener {
             hp += 10;
 
         }
-        if (str.length() == words[i].length()) {
+        if (str.length() == words[i].length()) { // << กรณีพิมพ์ผิด และจำนวนตัวอักษรเท่ากัน
             hp -= 20;
         }
 
@@ -111,7 +113,7 @@ public class game_main implements KeyListener, ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
+    public void actionPerformed(ActionEvent ae) { // << กรณีกด clear
         str = "";
         tf.setText(str);
     }
