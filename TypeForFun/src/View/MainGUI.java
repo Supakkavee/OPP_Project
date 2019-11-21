@@ -8,28 +8,25 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class MainGUI extends GUIControl implements ActionListener {
+public class MainGUI extends GUIControl implements  MouseListener {
 
-    private JPanel titleP;
-    private JLabel titleL;
-    private JButton startButton;
+
     private JPanel name = new MenuGame().getPanel();
-    BgPanel bg = new BgPanel(new ImageIcon("img/bg2.jpg").getImage());
+    BgPanel bg = new BgPanel(new ImageIcon("img/background.png").getImage());
+    BgPanel start = new BgPanel(new ImageIcon("img/start.png").getImage());
+    BgPanel exit = new BgPanel(new ImageIcon("img/exit.png").getImage());
 
     public MainGUI() {
 
         setC(createC());
-        //Label Helper class in Veiw
-        titleL = Helper.createTitleLabel("Type For Fun");
-        titleL.setBounds(340, 100, 600, 150);
 
-        //Button Helper class in Veiw
-        startButton = Helper.createButton("START");
-        startButton.setBounds(540, 500, 200, 50);
-        startButton.addActionListener(this);
-        //add
-        bg.add(titleL);
-        bg.add(startButton);
+        start.setBounds(540, 425, 210, 100);
+        start.addMouseListener(this);
+        bg.add(start);
+        
+        exit.setBounds(540, 560, 210, 100);
+        exit.addMouseListener(this);
+        bg.add(exit);
         addC(bg);
 
     }
@@ -38,16 +35,34 @@ public class MainGUI extends GUIControl implements ActionListener {
         new MainGUI();
     }
 
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource().equals(startButton)) {
+    @Override
+    public void mouseClicked(MouseEvent me) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+        if (me.getSource().equals(start)) {
             bg.setVisible(false);
             getC().removeAll();
             getC().repaint();
             getC().revalidate();
             addC(name);
             getC().setBackground(Color.black);
+        }else{
+            System.exit(0);
         }
+    }
 
+    @Override
+    public void mouseReleased(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
     }
 
 }
