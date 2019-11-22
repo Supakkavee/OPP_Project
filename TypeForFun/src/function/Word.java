@@ -1,3 +1,5 @@
+package function;
+
 
 import java.awt.*;
 import java.util.Random;
@@ -14,7 +16,6 @@ public class Word {
     public String getRandom(String[] arr) {
         Random r = new Random();
         int rand = r.nextInt(arr.length);
-        System.out.println(arr[rand]);
         return arr[rand];
     }
 

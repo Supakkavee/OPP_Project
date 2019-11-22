@@ -1,26 +1,24 @@
 package View;
 
-import Contoller.GUIControl;
 import View.MenuGame;
 import Model.Helper;
-import View.MyFrame;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
-public class MainGUI extends GUIControl implements MouseListener {
+public class MainGUI implements MouseListener {
 
-    private JPanel name = new MenuGame().getPanel();
+    private JFrame fr;
+    private JPanel name = new MenuGame();//.getPanel();
     BgPanel bg = new BgPanel(new ImageIcon("img/background.png").getImage());
     BgPanel start = new BgPanel(new ImageIcon("img/start.png").getImage());
     BgPanel exit = new BgPanel(new ImageIcon("img/exit.png").getImage());
 
     public MainGUI() {
 
-        setC(createC());
-
+        fr = new JFrame();
         start.setBounds(540, 425, 210, 100);
         start.addMouseListener(this);
         bg.add(start);
@@ -28,13 +26,20 @@ public class MainGUI extends GUIControl implements MouseListener {
         exit.setBounds(540, 560, 210, 100);
         exit.addMouseListener(this);
         bg.add(exit);
-        addC(bg);
-        getC().repaint();
-        getC().revalidate();
+        fr.add(bg);
+        fr.getContentPane().repaint();
+        fr.getContentPane().revalidate();
+        fr.setTitle("Type Slayer");
+        fr.setSize(1280, 720);
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.getContentPane().setBackground(Color.black);
+        fr.setVisible(true);
+        fr.setResizable(false);
     }
 
     public static void main(String[] args) {
         new MainGUI();
+
     }
 
     @Override
@@ -47,15 +52,16 @@ public class MainGUI extends GUIControl implements MouseListener {
         se.setFile(".//Music//Button.wav");
         se.play();
         try {
-                Thread.sleep(500);
-            } catch (InterruptedException ex) {}
+            Thread.sleep(250);
+        } catch (InterruptedException ex) {
+        }
         if (me.getSource().equals(start)) {
             bg.setVisible(false);
-            getC().removeAll();
-            getC().repaint();
-            getC().revalidate();
-            addC(name);
-            getC().setBackground(Color.black);
+            fr.getContentPane().removeAll();
+            fr.getContentPane().repaint();
+            fr.getContentPane().revalidate();
+            fr.add(name);
+
         } else {
             System.exit(0);
         }
