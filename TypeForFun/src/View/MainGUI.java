@@ -47,7 +47,7 @@ public class MainGUI extends GUIControl implements MouseListener {
         se.setFile(".//Music//Button.wav");
         se.play();
         try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (InterruptedException ex) {}
         if (me.getSource().equals(start)) {
             bg.setVisible(false);
