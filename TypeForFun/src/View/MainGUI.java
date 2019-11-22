@@ -28,7 +28,8 @@ public class MainGUI extends GUIControl implements  MouseListener {
         exit.addMouseListener(this);
         bg.add(exit);
         addC(bg);
-
+        getC().repaint();
+        getC().revalidate();
     }
 
     public static void main(String[] args) {
