@@ -6,10 +6,11 @@ import Model.Helper;
 import View.MyFrame;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
-public class MainGUI extends GUIControl implements  MouseListener {
-
+public class MainGUI extends GUIControl implements MouseListener {
 
     private JPanel name = new MenuGame().getPanel();
     BgPanel bg = new BgPanel(new ImageIcon("img/background.png").getImage());
@@ -23,7 +24,7 @@ public class MainGUI extends GUIControl implements  MouseListener {
         start.setBounds(540, 425, 210, 100);
         start.addMouseListener(this);
         bg.add(start);
-        
+
         exit.setBounds(540, 560, 210, 100);
         exit.addMouseListener(this);
         bg.add(exit);
@@ -42,6 +43,9 @@ public class MainGUI extends GUIControl implements  MouseListener {
 
     @Override
     public void mousePressed(MouseEvent me) {
+        SoundEffect se = new SoundEffect();
+        se.setFile(".//Music//Button.wav");
+        se.play();
         if (me.getSource().equals(start)) {
             bg.setVisible(false);
             getC().removeAll();
@@ -49,7 +53,10 @@ public class MainGUI extends GUIControl implements  MouseListener {
             getC().revalidate();
             addC(name);
             getC().setBackground(Color.black);
-        }else{
+        } else {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {}
             System.exit(0);
         }
     }
