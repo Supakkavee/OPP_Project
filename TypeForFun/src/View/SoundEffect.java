@@ -1,6 +1,5 @@
 package View;
 
-
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -35,4 +34,12 @@ public class SoundEffect {
         clip.start();
     }
 
+    public void stop() {
+        clip.stop();
+        clip.close();
+    }
+    public void loop(int c) {
+
+        clip.loop(c);
+    }
 }
