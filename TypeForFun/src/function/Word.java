@@ -16,7 +16,6 @@ public class Word {
         "tassel", "elaborate", "contrite", "tenacity", "coddle", "illicit", "harrow", "reprobate", "flop", "inasmuch", "lithe",
         "exoneration", "sinuous", "perilous", "middling", "entice", "profuse", "rapacious", "pundit", "apartheid", "mince",
         "defiance", "ingest", "occluded", "deluge", "accretion", "vestige", "tenuous", "cognizant", "weigh", "accolade",
-        "chicanery", "malevolence", "forge", "transient", "foment", "idiosyncrasy", "stray"};
         "chicanery", "malevolence", "forge", "transient", "foment", "idiosyncrasy", "stray", "discomfit", "spurn", "prosaic", 
         "regale", "diaphanous", "maul", "sober", "calipers", "felicitous", "doggerel", "dexterity", "punctilious", "visceral", 
         "effete", "probity", "harrow", "garrulous", "forswear", "conciliatory", "lope", "amalgamate", "guile", "elegy", "quixotic", 
@@ -66,7 +65,7 @@ public class Word {
         "swerve", "perfidious", "ebullience", "pedantic", "fracas", "engender", "clot", "loquacious", "sidestep", "shrewd", "rave",
         "enigma", "barren", "raffish", "esoteric", "quack", "suppliant", "dawdler", "recalcitrant", "hoi", "prune", "pinch", "scabbard",
         "resuscitation", "macabre", "embezzle", "predominate", "incise", "impute", "ecumenical"};
-
+    
     public String getRandom(String[] arr) {
         Random r = new Random();
         int rand = r.nextInt(arr.length);
