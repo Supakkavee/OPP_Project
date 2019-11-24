@@ -36,7 +36,26 @@ public class Word {
         "obsequious", "recitals", "deposition", "discreet", "glut", "finesse", "lavish", "impassive", "petrified", "sanguine", 
         "petrify", "qualm", "abscond", "consummate", "boisterous", "sagacious", "putrefaction", "deluge", "incongruous", "mettlesome", 
         "stigmatize", "scurvy", "foppish", "gossamer", "soporific", "tenacity", "solvent", "judicious", "dynamo", "apprise", 
-        "precarious", "trickle", "tarnished"};
+        "precarious", "trickle", "tarnished", "malign", "vacillation", "chary", "parsimonious", "deprave", "summarily", "odium", 
+        "ineffable", "stride", "vestige", "intrepid", "legacy", "toady", "thrift", "flout", "abet", "moderation", "insurrection", 
+        "quirk", "facetious", "savor", "paucity", "precepts", "waffle", "viscous", "perspicacity", "fringe", "ingenuous", "trifling",
+        "imprecation", "elicit", "repast", "antithetical", "gush", "prolix", "exoneration", "fledged", "preponderance", "implosion", 
+        "euphoria", "quandary", "disdain", "middling", "penitent", "phlegmatic", "arrant", "diffidence", "engrave", "ameliorate", 
+        "lionize", "foil", "empirical", "preclude", "veneer", "slake", "curtail", "cumbersome", "sinuous", "indelible", "elaborate", 
+        "acarpous", "fulsome", "dupe", "feud", "desuetude", "fragrant", "stickler", "reconcile", "sluggard", "irrevocable", 
+        "vivacious", "sordid", "insouciant", "valorous", "extort", "nadir", "serration", "argot", "fatuous", "protracted",
+        "expatiate", "apostate", "aversion", "evoke", "blandness", "cogitate", "sophisticated", "smolder", "congeal", "invincible", 
+        "coy", "lithe", "frenetic", "figurehead", "desiccant", "transient", "truce", "gust", "perilous", "flop", "duress", "descry",
+        "sycophant", "erudite", "covert", "corroboration", "drowsiness", "liberality", "tangential", "partisan", "piquant", "grave", 
+        "peregrination", "odor", "philistine", "divergence", "profligacy", "invective", "fragile", "discern", "matriculation", 
+        "misanthrope", "myriad", "recluse", "enmity", "efficacy", "infuriate", "precursory", "slack", "divulge", "arboreal", "garment",
+        "presumption", "hypocrisy", "subpoena", "nascent", "inept", "extempore", "discrete", "arduous", "insipid", "incredulous", 
+        "weigh", "puissance", "hone", "reproach", "clinch", "abut", "breach", "prevaricate", "preternatural", "dislodge", "germane",
+        "portent", "disallow", "dud", "volatile", "servile", "slur", "supplicate", "eulogy", "aspersion", "repine", "fidget", "egress",
+        "gnaw", "pest", "squat", "redoubtable", "baleful", "indigence", "inferno", "dissemble", "palliate", "impromptu", "torment", 
+        "pugnacious", "verve", "discourse", "evasive", "profuse", "irascible", "refulgent", "incite", "dwarf", "mercurial", "barrage", 
+        "unscathed", "daunt", "prone", "rapacious", "oblivious", "correlate", "buoyant", "lumber", "waft", "propagation", "drawl", 
+        "accolade", "rancorous"};
 
     public String getRandom(String[] arr) {
         Random r = new Random();
