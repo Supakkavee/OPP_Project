@@ -107,7 +107,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
             se.play();
         } else {
             //voice Atk Boss
-            se.setFile(".//Music//shotgun.wav");
+            se.setFile(".//Music//Button.wav");
             se.play();
             HpPlayer.setValue(HpPlayer.getValue() - AtkB);
         }
