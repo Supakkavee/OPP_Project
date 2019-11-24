@@ -24,7 +24,6 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
     private String WordAtk, Db = "f";
     private JLabel WordL, DAtk1, DAtk2;
     private JPanel gameover;
-    private JPanel GamePlay2;
     private int state = 1;
     private JPanel winner = new win();
     BgPanel bg = new BgPanel(new ImageIcon("img/background3.png").getImage());
