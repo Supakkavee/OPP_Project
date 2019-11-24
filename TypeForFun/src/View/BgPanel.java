@@ -13,6 +13,7 @@ public class BgPanel extends JPanel {
     public BgPanel(String img) {
         this(new ImageIcon(img).getImage());
     }
+
     public BgPanel(Image img) {
         this.img = img;
         Dimension size = new Dimension(1280, 720);

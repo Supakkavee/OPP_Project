@@ -65,7 +65,7 @@ public class Word {
         "swerve", "perfidious", "ebullience", "pedantic", "fracas", "engender", "clot", "loquacious", "sidestep", "shrewd", "rave",
         "enigma", "barren", "raffish", "esoteric", "quack", "suppliant", "dawdler", "recalcitrant", "hoi", "prune", "pinch", "scabbard",
         "resuscitation", "macabre", "embezzle", "predominate", "incise", "impute", "ecumenical"};
-    
+
     public String getRandom(String[] arr) {
         Random r = new Random();
         int rand = r.nextInt(arr.length);

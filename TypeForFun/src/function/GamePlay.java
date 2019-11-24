@@ -4,6 +4,7 @@ import static Model.Helper.createJProgressBar;
 import static Model.Helper.createLabel;
 import static Model.Helper.createTextField;
 import View.BgPanel;
+import View.MainGUI;
 import View.GameOver;
 import View.SoundEffect;
 import View.win;
@@ -213,7 +214,6 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
         } catch (Exception ex) {
         }
     }
-
 
     public String getWordAtk() {
         return WordAtk;

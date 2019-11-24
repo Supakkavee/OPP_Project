@@ -1,7 +1,6 @@
 package function;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.Ellipse2D;
 import javax.swing.*;
 
 public class Shoot extends JLabel implements ActionListener {
@@ -14,7 +13,7 @@ public class Shoot extends JLabel implements ActionListener {
         g.drawImage(bullet, x, 0, null);
 
         t.start();
-        repaint();
+         repaint();
     }
 
 
