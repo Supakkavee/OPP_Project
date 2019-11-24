@@ -1,8 +1,12 @@
 package function;
 
+import static Model.Helper.createJProgressBar;
 import static Model.Helper.createLabel;
 import static Model.Helper.createTextField;
 import View.BgPanel;
+import View.GameOver;
+import View.SoundEffect;
+import View.win;
 import function.Word;
 import java.awt.*;
 import java.awt.event.*;
@@ -18,38 +22,44 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
     private JTextField Text;
     private String WordAtk, Db = "f";
     private JLabel WordL, DAtk1, DAtk2;
-    BgPanel bg = new BgPanel(new ImageIcon("img/backgroundGame.png").getImage());
-    BgPanel Boss = new BgPanel(new ImageIcon("img/Monster2.png").getImage());
+    private JPanel gameover;
+    private JPanel GamePlay2;
+    private int state = 1;
+    private JPanel winner = new win();
+    BgPanel bg = new BgPanel(new ImageIcon("img/background3.png").getImage());
+    BgPanel Boss = new BgPanel(new ImageIcon("img/Monster3.png").getImage());
+    BgPanel bg2 = new BgPanel(new ImageIcon("img/background4.png").getImage());
+    BgPanel Boss2 = new BgPanel(new ImageIcon("img/Monster.png").getImage());
+    BgPanel bg3 = new BgPanel(new ImageIcon("img/backgroundGame.png").getImage());
+    BgPanel Boss3 = new BgPanel(new ImageIcon("img/Monster2.png").getImage());
+    Shoot s = new Shoot();
 
     public GamePlay(String img) {
+        setLayout(null);
         repaint();
         revalidate();
-        //setLayout(null);
+        //shoot
+        s.setBounds(400, 450, 500, 50);
+        s.setVisible(false);
+        add(s);
+        //Player
         BgPanel Player = new BgPanel(new ImageIcon(img).getImage());
         Player.setBounds(100, 330, 246, 302);
         bg.add(Player);
+        gameover = new GameOver(img);
 
-        HpPlayer = new JProgressBar(0, 1000);
+        HpPlayer = createJProgressBar(1000);
         HpPlayer.setBounds(100, 50, 300, 30);
-        HpPlayer.setStringPainted(true);
-        HpPlayer.setForeground(Color.red);
-        HpPlayer.setBackground(Color.black);
-        HpPlayer.setPreferredSize(new Dimension(300, 30));
-        HpPlayer.setValue(1000);
         bg.add(HpPlayer);
 
         DAtk1 = createLabel("");
         DAtk1.setBounds(220, 280, 100, 30);
         bg.add(DAtk1);
         //HP Boss
-        HpBoss = new JProgressBar(0, 1000);
+        HpBoss = createJProgressBar(1000);
         HpBoss.setBounds(880, 50, 300, 30);
-        HpBoss.setStringPainted(true);
-        HpBoss.setForeground(Color.red);
-        HpBoss.setBackground(Color.black);
-        HpBoss.setPreferredSize(new Dimension(300, 30));
-        HpBoss.setValue(1000);
         bg.add(HpBoss);
+
         Boss.setBounds(780, 220, 500, 460);
         bg.add(Boss);
 
@@ -59,20 +69,18 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
         //Text
         Text = createTextField(50);
         Text.setBounds(490, 600, 300, 50);
-        Text.setForeground(Color.white);
-        Text.setBackground(Color.black);
         bg.add(Text);
 
         //Countdown time for word
         Ti.setBounds(600, 50, 50, 30);
-        Ti.setForeground(Color.yellow);
+        Ti.setForeground(Color.black);
         Ti.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 40));
         bg.add(Ti);
         tTi.start();
         //Word random
         setWordAtk(w.getRandom(w.getWord()));
         WordL = new JLabel(getWordAtk());
-        WordL.setForeground(Color.yellow);
+        WordL.setForeground(Color.black);
         WordL.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 40));
         WordL.setBounds(580, 150, 300, 50);
         bg.add(WordL);
@@ -84,13 +92,33 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+
+        SoundEffect se = new SoundEffect();
         if (Text.getText().equals(getWordAtk())) {
+            //shoot
+            s.setVisible(true);
+            s.setX();
+            //Damage Player
             HpBoss.setValue(HpBoss.getValue() - AtkP);
             Db = "t";
+            //voice Atk Player
+            se.setFile(".//Music//shotgun.wav");
+            se.play();
         } else {
+            //voice Atk Boss
+            se.setFile(".//Music//shotgun.wav");
+            se.play();
             HpPlayer.setValue(HpPlayer.getValue() - AtkB);
         }
-        Ti.setTime(10);// set defualt time 
+        if (state == 1) {
+            Ti.setTime(11);// set defualt time 
+        }
+        if (state == 2) {
+            Ti.setTime(8);// set defualt time 
+        }
+        if (state == 0) {
+            Ti.setTime(6);// set defualt time 
+        }
         setWordAtk(w.getRandom(w.getWord()));
         WordL.setText(getWordAtk());
         Text.setText("");
@@ -98,10 +126,74 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
 
     public void run() {
         try {
-            while (true) {
+            SoundEffect bs = new SoundEffect();
+            SoundEffect mu = new SoundEffect();
+            boolean running = true;
+            mu.setFile(".//Music//time.wav");
+            mu.play();
+            mu.loop(1000);
+            while (running) {
+                if (HpPlayer.getValue() <= 0) {
+                    //setVisible(false);
+                    mu.stop();
+                    removeAll();
+                    revalidate();
+                    running = false;
+                    setLayout(new BorderLayout());
+                    add(gameover);
+                    repaint();
+                }
+                //hp Boss = 0
+                if (HpBoss.getValue() <= 0 && state == 1) {
+                    bg.remove(bg);
+                    bg.remove(Boss);
+                    bg.add(Boss2);
+                    bg.add(bg2);
+                    AtkB += 100;
+                    HpBoss.setMaximum(1500);
+                    HpBoss.setValue(1500);
+                    Boss2.setBounds(780, 220, 500, 460);
+                    Ti.setTime(8);
+                    repaint();
+                    state = 2;
+                }
+                if (HpBoss.getValue() <= 0 && state == 2) {
+                    bg.remove(bg2);
+                    bg.remove(Boss2);
+                    bg.add(Boss3);
+                    bg.add(bg3);
+                    AtkB += 100;
+                    Ti.setForeground(Color.white);
+                    WordL.setForeground(Color.white);
+                    HpBoss.setMaximum(2000);
+                    HpBoss.setValue(2000);
+                    Boss3.setBounds(780, 220, 500, 460);
+                    Ti.setTime(6);
+                    repaint();
+                    state = 0;
+                }
+                if (HpBoss.getValue() <= 0 && state == 0) {
+                    mu.stop();
+                    removeAll();
+                    revalidate();
+                    running = false;
+
+                    setLayout(new BorderLayout());
+                    add(winner);
+                    repaint();
+                }
                 Thread.sleep(1000);
-                //if time = 0 setdefualt hp down
                 if (Ti.getTime() == 0) {
+                    if (state == 2) {
+                        Ti.setTime(8);
+                    } else if (state == 0) {
+                        Ti.setTime(6);
+                    }
+
+                    //voice Atk Boss
+                    bs.setFile(".//Music//Button.wav");
+                    bs.play();
+                    Text.setText("");
                     setWordAtk(w.getRandom(w.getWord()));
                     WordL.setText(getWordAtk());
                     HpPlayer.setValue(HpPlayer.getValue() - AtkB);
@@ -109,29 +201,19 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                     Thread.sleep(1000);
                     DAtk1.setText("");
                 }
+
                 if (Db.equals("t")) {
+                    Thread.sleep(250);
                     Db = "f";
                     DAtk2.setText("-" + AtkP + "!");
                     Thread.sleep(1000);
                     DAtk2.setText("");
                 }
-
-                if (HpPlayer.getValue() <= 0) {
-                    //setVisible(false);
-                    removeAll();
-                    repaint();
-                    revalidate();
-                }
-                //hp Boss = 0
-                if (HpBoss.getValue() <= 0) {
-                    removeAll();
-                    repaint();
-                    revalidate();
-                }
             }
         } catch (Exception ex) {
         }
     }
+
 
     public String getWordAtk() {
         return WordAtk;

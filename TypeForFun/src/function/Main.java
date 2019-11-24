@@ -5,6 +5,7 @@
  */
 package function;
 
+import View.GameOver;
 import javax.swing.JFrame;
 
 

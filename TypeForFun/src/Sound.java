@@ -72,6 +72,9 @@ public class Sound {
             clip.start();
         }
 
+        public void stop() {
+            clip.stop();
+        }
     }
 
     public class ButtonHandler implements ActionListener {

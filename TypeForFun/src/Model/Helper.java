@@ -21,7 +21,11 @@ public class Helper{
     public static JTextField createTextField(int size){
         JTextField f = new JTextField(size);
         f.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 30));
-        f.setOpaque(false);
+        //f.setOpaque(false);
+        f.requestFocusInWindow();
+        f.setForeground(Color.white);
+        f.setBackground(Color.black);
+        f.setHorizontalAlignment(JTextField.CENTER);
         return f;
     }
     
@@ -39,5 +43,13 @@ public class Helper{
         A.setBackground(Color.black);
         return A;
     }
-
+    public static JProgressBar createJProgressBar(int hp){
+        JProgressBar b = new JProgressBar(0, hp);
+        b.setStringPainted(true);
+        b.setForeground(Color.red);
+        b.setBackground(Color.black);
+        b.setPreferredSize(new Dimension(300, 30));
+        b.setValue(hp);
+        return b;
+    }
 }

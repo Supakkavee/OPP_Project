@@ -29,7 +29,6 @@ public class SoundEffect {
     }
 
     public void play() {
-
         clip.setFramePosition(0);
         clip.start();
     }
@@ -38,8 +37,9 @@ public class SoundEffect {
         clip.stop();
         clip.close();
     }
-    public void loop(int c) {
 
+    public void loop(int c) {
         clip.loop(c);
     }
+
 }
