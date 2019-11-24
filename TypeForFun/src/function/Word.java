@@ -55,7 +55,16 @@ public class Word {
         "gnaw", "pest", "squat", "redoubtable", "baleful", "indigence", "inferno", "dissemble", "palliate", "impromptu", "torment", 
         "pugnacious", "verve", "discourse", "evasive", "profuse", "irascible", "refulgent", "incite", "dwarf", "mercurial", "barrage", 
         "unscathed", "daunt", "prone", "rapacious", "oblivious", "correlate", "buoyant", "lumber", "waft", "propagation", "drawl", 
-        "accolade", "rancorous"};
+        "accolade", "rancorous", "ire", "tout", "castigate", "fleet", "effrontery", "conceal", "verdant", "forage", "ignoble", 
+        "disparate", "recompense", "conspicuous", "salubrious", "idyll", "disproof", "vilify", "coalescing", "profligate", "noxious",
+        "grandiloquent", "resort", "statement", "compunction", "inclined", "pusillanimous", "contrite", "pious", "exuberance", "tamp", 
+        "tawdry", "derivative", "disconcert", "sobriety", "malinger", "debacle", "sequence", "halcyon", "flak", "entice", 
+        "verisimilitude", "ubiquitous", "stray", "approbation", "pundit", "hoax", "imperative", "transitory", "obfuscate", "plod", 
+        "strut", "sermon", "splenetic", "idolatry", "raconteur", "ambiguous", "exorbitant", "indomitable", "suborn", "proscribe", 
+        "aloof", "neophyte", "sawdust", "deplete", "poignant", "vitiate", "labyrinthine", "resilience", "scent", "coeval", "grovel", 
+        "swerve", "perfidious", "ebullience", "pedantic", "fracas", "engender", "clot", "loquacious", "sidestep", "shrewd", "rave",
+        "enigma", "barren", "raffish", "esoteric", "quack", "suppliant", "dawdler", "recalcitrant", "hoi", "prune", "pinch", "scabbard",
+        "resuscitation", "macabre", "embezzle", "predominate", "incise", "impute", "ecumenical"};
 
     public String getRandom(String[] arr) {
         Random r = new Random();
