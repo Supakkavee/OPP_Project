@@ -4,11 +4,9 @@ import static Model.Helper.createJProgressBar;
 import static Model.Helper.createLabel;
 import static Model.Helper.createTextField;
 import View.BgPanel;
-import View.MainGUI;
 import View.GameOver;
 import View.SoundEffect;
 import View.win;
-import function.Word;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -66,24 +64,30 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
         DAtk2 = createLabel("");
         DAtk2.setBounds(900, 200, 100, 30);
         bg.add(DAtk2);
+        //Panel
+        JPanel p = new JPanel();
+        p.setBackground(Color.yellow);
+        p.setBounds(490, 50, 300, 100);
+        p.setLayout(new GridLayout(2,1));
+        bg.add(p);
         //Text
         Text = createTextField(50);
         Text.setBounds(490, 600, 300, 50);
         bg.add(Text);
 
         //Countdown time for word
-        Ti.setBounds(600, 50, 50, 30);
         Ti.setForeground(Color.black);
+        Ti.setHorizontalAlignment(JLabel.CENTER);
         Ti.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 40));
-        bg.add(Ti);
+        p.add(Ti);
         tTi.start();
         //Word random
         setWordAtk(w.getRandom(w.getWord()));
         WordL = new JLabel(getWordAtk());
         WordL.setForeground(Color.black);
+        WordL.setHorizontalAlignment(JLabel.CENTER);
         WordL.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 40));
-        WordL.setBounds(580, 150, 300, 50);
-        bg.add(WordL);
+        p.add(WordL);
 
         add(bg);
         //ActionListener
@@ -136,6 +140,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                 if (HpPlayer.getValue() <= 0) {
                     //setVisible(false);
                     mu.stop();
+                    
                     removeAll();
                     revalidate();
                     running = false;
