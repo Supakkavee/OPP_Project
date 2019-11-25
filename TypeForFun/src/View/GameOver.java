@@ -26,7 +26,6 @@ public class GameOver extends JPanel implements MouseListener {
         bg.add(s2);
         add(bg);
         this.character = img;
-
     }
 
     @Override

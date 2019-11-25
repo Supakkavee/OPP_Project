@@ -7,7 +7,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class win extends JPanel implements MouseListener {
-    private BgPanel bg = new BgPanel(new ImageIcon("img/win2.png").getImage());
+    private BgPanel bg = new BgPanel(new ImageIcon("img/win2.gif").getImage());
     private BgPanel s1 = new BgPanel(new ImageIcon("img/retry.png").getImage());
     private BgPanel s2 = new BgPanel(new ImageIcon("img/exitover.png").getImage());
 
