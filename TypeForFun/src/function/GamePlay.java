@@ -185,7 +185,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                     add(winner);
                     repaint();
                 }
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 if (Ti.getTime() == 0) {
                     if (state == 2) {
                         Ti.setTime(8);
