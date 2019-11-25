@@ -154,6 +154,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                     bg.add(Boss2);
                     bg.add(bg2);
                     AtkB += 100;
+                    AtkP += 50;
                     HpBoss.setMaximum(1500);
                     HpBoss.setValue(1500);
                     Boss2.setBounds(780, 220, 500, 460);
@@ -167,7 +168,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                     bg.add(Boss3);
                     bg.add(bg3);
                     AtkB += 100;
-
+                    AtkP += 50;
                     HpBoss.setMaximum(2000);
                     HpBoss.setValue(2000);
                     Boss3.setBounds(780, 220, 500, 460);
