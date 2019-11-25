@@ -188,9 +188,9 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                 }
                 if (Ti.getTime() == 0) {
                     if (state == 2) {
-                        Ti.setTime(8);
+                        Ti.setTime(9);
                     } else if (state == 0) {
-                        Ti.setTime(6);
+                        Ti.setTime(7);
                     }
 
                     //voice Atk Boss
