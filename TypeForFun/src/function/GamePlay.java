@@ -120,7 +120,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
             Ti.setTime(8);// set defualt time 
         }
         if (state == 0) {
-            Ti.setTime(6);// set defualt time 
+            Ti.setTime(7);// set defualt time 
         }
         setWordAtk(w.getRandom(w.getWord()));
         WordL.setText(getWordAtk());
@@ -172,7 +172,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                     HpBoss.setMaximum(2000);
                     HpBoss.setValue(2000);
                     Boss3.setBounds(780, 220, 500, 460);
-                    Ti.setTime(6);
+                    Ti.setTime(7);
                     repaint();
                     state = 0;
                 }
@@ -186,7 +186,6 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                     add(winner);
                     repaint();
                 }
-                Thread.sleep(500);
                 if (Ti.getTime() == 0) {
                     if (state == 2) {
                         Ti.setTime(8);
@@ -213,6 +212,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                     Thread.sleep(1000);
                     DAtk2.setText("");
                 }
+                Thread.sleep(500);
             }
         } catch (Exception ex) {
         }
