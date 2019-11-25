@@ -9,6 +9,8 @@ import View.SoundEffect;
 import View.win;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 public class GamePlay extends JPanel implements Runnable, ActionListener {
@@ -67,7 +69,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
         //Panel
         BgPanel Wordp = new BgPanel(new ImageIcon("img/Word.png").getImage());
         Wordp.setBounds(490, 50, 300, 100);
-        Wordp.setLayout(new GridLayout(2,1));
+        Wordp.setLayout(new GridLayout(2, 1));
         bg.add(Wordp);
         //Text
         Text = createTextField(50);
@@ -108,6 +110,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
             se.setFile(".//Music//shotgun.wav");
             se.play();
         } else {
+            DAtk1.setText("-" + AtkB + "!");
             //voice Atk Boss
             se.setFile(".//Music//Button.wav");
             se.play();
@@ -139,7 +142,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                 if (HpPlayer.getValue() <= 0) {
                     //setVisible(false);
                     mu.stop();
-                    
+
                     removeAll();
                     revalidate();
                     running = false;
@@ -213,6 +216,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                     DAtk2.setText("");
                 }
                 Thread.sleep(500);
+                DAtk1.setText("");
             }
         } catch (Exception ex) {
         }
