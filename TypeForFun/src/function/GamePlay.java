@@ -65,11 +65,10 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
         DAtk2.setBounds(900, 200, 100, 30);
         bg.add(DAtk2);
         //Panel
-        JPanel p = new JPanel();
-        p.setBackground(Color.yellow);
-        p.setBounds(490, 50, 300, 100);
-        p.setLayout(new GridLayout(2,1));
-        bg.add(p);
+        BgPanel Wordp = new BgPanel(new ImageIcon("img/Word.png").getImage());
+        Wordp.setBounds(490, 50, 300, 100);
+        Wordp.setLayout(new GridLayout(2,1));
+        bg.add(Wordp);
         //Text
         Text = createTextField(50);
         Text.setBounds(490, 600, 300, 50);
@@ -79,7 +78,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
         Ti.setForeground(Color.black);
         Ti.setHorizontalAlignment(JLabel.CENTER);
         Ti.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 40));
-        p.add(Ti);
+        Wordp.add(Ti);
         tTi.start();
         //Word random
         setWordAtk(w.getRandom(w.getWord()));
@@ -87,7 +86,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
         WordL.setForeground(Color.black);
         WordL.setHorizontalAlignment(JLabel.CENTER);
         WordL.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 40));
-        p.add(WordL);
+        Wordp.add(WordL);
 
         add(bg);
         //ActionListener
@@ -168,8 +167,7 @@ public class GamePlay extends JPanel implements Runnable, ActionListener {
                     bg.add(Boss3);
                     bg.add(bg3);
                     AtkB += 100;
-                    Ti.setForeground(Color.white);
-                    WordL.setForeground(Color.white);
+
                     HpBoss.setMaximum(2000);
                     HpBoss.setValue(2000);
                     Boss3.setBounds(780, 220, 500, 460);
